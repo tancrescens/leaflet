@@ -5,16 +5,28 @@ A site that saves food places bookmarks and has a search + plan your route funct
 
 # Features
 
-- Bookmark the food places you have visited
-- Search Food places
-- Plan your route
+- **Bookmark**: bookmark the food places you have visited (WIP)
+- **Search**: Search Food places (Future)
+- **Route**: Plan your route (Far Future)
 
-# Other stuff
+## Bookmark Features
 
-- JSON file to store all the categories
-- JSON file to store all the places visited
-- To list down all the food places
-- To map down all the food places
-- To cluster all the food places (UI/UX)
-- To display categories as layers.
-- Foursquare API.
+- Display marker when clicked on individual entries
+- Can save individual entries into categories
+- Create, Read, Update, Delete categories
+- Display cluster of markers when categories clicked
+
+## Search Features
+
+- Draw search results from Foursquare API and display into a list
+- Displaymarkers of search results
+
+## Route Features
+
+- Mark and link markers into a route
+- Implement bus/mrt api to include time estimation and best route
+- Food Trail: create a community page that has users can contribute pre-planned routes to share.
+  - Description
+  - Mode of transport
+  - time
+  - Key food places or highlights
