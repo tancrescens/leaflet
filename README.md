@@ -9,19 +9,19 @@ A site that saves food places bookmarks and has a search + plan your route funct
 - **Search**: Search Food places (Future)
 - **Route**: Plan your route (Far Future)
 
-## Bookmark Features
+### Bookmark Features
 
 - Display marker when clicked on individual entries
 - Can save individual entries into categories
 - Create, Read, Update, Delete categories
 - Display cluster of markers when categories clicked
 
-## Search Features
+### Search Features
 
 - Draw search results from Foursquare API and display into a list
 - Displaymarkers of search results
 
-## Route Features
+### Route Features
 
 - Mark and link markers into a route
 - Implement bus/mrt api to include time estimation and best route
