@@ -1,15 +1,15 @@
 // CONTROLLER: Receive data from data.js and display it onto index.html
 
-// START Setting up essential variables
+// START Setting up essential variables =======================================================================
 const JAWG_ACCESS_TOKEN =
   "890xUFmEiNigo8eh1cbOpyQ7he6o2aq2kmrqIM0Vc9Knqm1wWgmACjHwmqwKE1VK";
 let singaporeCor = [1.39,103.80]; // Singapore latlng
 let cckCor = [1.384, 103.747];
 let singaporeMap = L.map("map").setView(singaporeCor, 13); // Set the center point
-// END Setting up essential variables
+// END Setting up essential variables =======================================================================
 
 
-// START Display Jawg.sunny tile
+// START Display Jawg.sunny tile =======================================================================
 var Jawg_Sunny = L.tileLayer(
   "https://tile.jawg.io/jawg-sunny/{z}/{x}/{y}{r}.png?access-token={accessToken}",
   {
@@ -21,10 +21,10 @@ var Jawg_Sunny = L.tileLayer(
   }
 );
 Jawg_Sunny.addTo(singaporeMap);
-// END Display Jawg.sunny tile
+// END Display Jawg.sunny tile =======================================================================
 
 
-// START Display cckCor marker
+// START Display cckCor marker =======================================================================
 let cckGroup = L.layerGroup();
 cckMarker = L.marker(cckCor);
 cckMarker.bindPopup(`Choa Chu Kang`);
@@ -40,10 +40,10 @@ let cckCircle = L.circle(cckCor, {
   radius: 500,
 });
 cckCircle.addTo(cckGroup);
-// END Circle display cck 500m radius
+// END Circle display cck 500m radius =======================================================================
 
 
-// START Clustering Markers
+// START Clustering Markers =======================================================================
 function getRandomLatLng(map) {
   // get the boundaries of the map
   let bounds =    map.getBounds();
@@ -67,10 +67,10 @@ for(let i = 0; i < 1000; i++){
 }
 // add marker cluster to map
 randomMarkerClusterLayer.addTo(randomMarkerClusterGroup);
-// END Clustering Markers
+// END Clustering Markers =======================================================================
 
 
-// START Polylines creation
+// START Polylines creation =======================================================================
 // Various locations
 let polylineGroup = L.layerGroup();
 const brothersRamen = {latlng:[1.2761402436896734, 103.84621509560635], name:"Brothers Ramen"};
@@ -92,10 +92,10 @@ let latlngArray = places.map(place=>place.latlng);
 // polyline creation
 var polyline = L.polyline(latlngArray, {color:'red'})
 polyline.addTo(polylineGroup);
-// END Polylines creation
+// END Polylines creation =======================================================================
 
 
-// START layering
+// START layering =======================================================================
 // baseLayers: only 1 baseLayer can appear at a time
 let baseLayers = {
 
@@ -108,3 +108,4 @@ let overlays = {
 }
 // Add layers to the map
 L.control.layers(baseLayers, overlays).addTo(singaporeMap);
+// END layering =======================================================================
