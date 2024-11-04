@@ -4,6 +4,38 @@ document.addEventListener("DOMContentLoaded", function() {
   main();
 });
 
+async function main(){
+  // START Setting up essential variables =======================================================================
+  const JAWG_ACCESS_TOKEN =
+    "890xUFmEiNigo8eh1cbOpyQ7he6o2aq2kmrqIM0Vc9Knqm1wWgmACjHwmqwKE1VK";
+  let singaporeCor = [1.39,103.80]; // Singapore latlng
+  let singaporeMap = L.map("map").setView(singaporeCor, 13); // Set the center point
+  // END Setting up essential variables =======================================================================
+
+  displayJawgSunnyTile(singaporeMap, JAWG_ACCESS_TOKEN);
+
+  // Group creation
+  let cckGroup = displayCckCordinates();
+  let randomMarkerClusterGroup = addRandomMarkerClusters(singaporeMap, 100)
+  let polylineGroup = createPolylines();
+
+  // START layering =======================================================================
+  // baseLayers: only 1 baseLayer can appear at a time
+  let baseLayers = {
+
+  }
+  // overlays: all selected overlays/groups will appear
+  let overlays = {
+    'CCK': cckGroup,
+    'Random Clusters': randomMarkerClusterGroup,
+    'Polyline': polylineGroup
+  }
+  // Add layers to the map
+  L.control.layers(baseLayers, overlays).addTo(singaporeMap);
+  // END layering =======================================================================
+}// END main() =======================================================================
+
+
 
 function displayJawgSunnyTile(map, JAWG_ACCESS_TOKEN){
   var Jawg_Sunny = L.tileLayer(
@@ -91,35 +123,3 @@ async function createPolylines(){
 
   return polylineGroup;
 }
-
-async function main(){
-  // START Setting up essential variables =======================================================================
-  const JAWG_ACCESS_TOKEN =
-    "890xUFmEiNigo8eh1cbOpyQ7he6o2aq2kmrqIM0Vc9Knqm1wWgmACjHwmqwKE1VK";
-  let singaporeCor = [1.39,103.80]; // Singapore latlng
-  let singaporeMap = L.map("map").setView(singaporeCor, 13); // Set the center point
-  // END Setting up essential variables =======================================================================
-
-  displayJawgSunnyTile(singaporeMap, JAWG_ACCESS_TOKEN);
-
-  // Group creation
-  let cckGroup = displayCckCordinates();
-  let randomMarkerClusterGroup = addRandomMarkerClusters(singaporeMap, 100)
-  let polylineGroup = createPolylines();
-
-  // START layering =======================================================================
-  // baseLayers: only 1 baseLayer can appear at a time
-  let baseLayers = {
-
-  }
-  // overlays: all selected overlays/groups will appear
-  let overlays = {
-    'CCK': cckGroup,
-    'Random Clusters': randomMarkerClusterGroup,
-    'Polyline': polylineGroup
-  }
-  // Add layers to the map
-  L.control.layers(baseLayers, overlays).addTo(singaporeMap);
-  // END layering =======================================================================
-}// END main() =======================================================================
-
