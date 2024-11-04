@@ -6,6 +6,9 @@ A site that saves food places bookmarks and has a search + plan your route funct
 # Features
 
 - **Bookmark**: bookmark the food places you have visited (WIP)
+  - Database: store food places to JSON.
+  - Map: Show markers from saved food places.
+  - Route: Draw polyline according to shown bookmarks.
 - **Search**: Search Food places (Future)
 - **Route**: Plan your route (Far Future)
 

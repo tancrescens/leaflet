@@ -27,6 +27,12 @@
     <title>Leaflet Map</title>
   </head>
   <body>
+    <header id="header">
+      <button id="readBookmarks">Get all bookmarks</button>
+      <button id="createBookmark">Create a bookmark</button>
+      <button id="editBookmark">Edit a bookmark</button>
+      <button id="deleteBookmark">Delete a bookmark</button>
+    </header>
     <div id="map"></div>
 
     <!-- Leaflet JS tile provider -->
@@ -46,7 +52,9 @@
     ></script>
     <!-- marker cluster plugin -->
     <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster-src.js"></script>
-    <!-- script.js -->
+    <!-- customs scripts -->
+    <script src="data.js"></script>
+    <script src="bookmark.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
