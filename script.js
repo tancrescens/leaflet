@@ -18,9 +18,7 @@ async function main(){
   // Group creation
   let cckGroup = displayCckCordinates();
   let randomMarkerClusterGroup = addRandomMarkerClusters(singaporeMap, 100);
-  let polylineGroup = createPolylines();
-
-  await updateBookmark();
+  let polylineGroup = await createPolylines();
 
   // START layering =======================================================================
   // baseLayers: only 1 baseLayer can appear at a time
@@ -46,7 +44,7 @@ function displayJawgSunnyTile(map, JAWG_ACCESS_TOKEN){
     {
       attribution:
         '<a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      minZoom: 0,
+      minZoom: 1,
       maxZoom: 22,
       accessToken: JAWG_ACCESS_TOKEN,
     }
@@ -108,8 +106,8 @@ async function createPolylines(){
   let polylineGroup = L.layerGroup();
 
   // Compiled locations
-  await createBookmark(); // hard coded 3 places into db. #todo: change to create bookmark from user input
   let places = await getBookmarks();
+  console.log(places)
 
   // marker creation for compiled locations
   places.forEach(place=>{
@@ -121,7 +119,7 @@ async function createPolylines(){
   // push each latlng into array
   let latlngArray = places.map(place=>place.latlng);
   // polyline creation
-  var polyline = L.polyline(latlngArray, {color:'red'})
+  let polyline = L.polyline(latlngArray, {color:'red'})
   polyline.addTo(polylineGroup);
 
   return polylineGroup;
