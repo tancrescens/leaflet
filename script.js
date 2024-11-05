@@ -12,12 +12,15 @@ async function main(){
   let singaporeMap = L.map("map").setView(singaporeCor, 13); // Set the center point
   // END Setting up essential variables =======================================================================
 
+  // Displaying Jawg Sunny map tile
   displayJawgSunnyTile(singaporeMap, JAWG_ACCESS_TOKEN);
 
   // Group creation
   let cckGroup = displayCckCordinates();
-  let randomMarkerClusterGroup = addRandomMarkerClusters(singaporeMap, 100)
+  let randomMarkerClusterGroup = addRandomMarkerClusters(singaporeMap, 100);
   let polylineGroup = createPolylines();
+
+  await updateBookmark();
 
   // START layering =======================================================================
   // baseLayers: only 1 baseLayer can appear at a time
