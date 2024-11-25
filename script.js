@@ -8,13 +8,16 @@ async function main(){
   // START Setting up essential variables =======================================================================
   const JAWG_ACCESS_TOKEN =
     "890xUFmEiNigo8eh1cbOpyQ7he6o2aq2kmrqIM0Vc9Knqm1wWgmACjHwmqwKE1VK";
+    // Stadia Tile API
+  const STADIA_API_Key = "c3d03e60-23f4-4387-b5a9-4016b692ad95";
+
   let singaporeCor = [1.39,103.80]; // Singapore latlng
   let singaporeMap = L.map("map").setView(singaporeCor, 13); // Set the center point
   // END Setting up essential variables =======================================================================
 
   // Displaying Jawg Sunny map tile
-  displayJawgSunnyTile(singaporeMap, JAWG_ACCESS_TOKEN);
-
+  // displayJawgSunnyTile(singaporeMap, JAWG_ACCESS_TOKEN);
+  displayStadiaTile(singaporeMap, STADIA_API_Key)
   // Group creation
   let cckGroup = displayCckCordinates();
   let randomMarkerClusterGroup = addRandomMarkerClusters(singaporeMap, 100);
@@ -37,7 +40,7 @@ async function main(){
 }// END main() =======================================================================
 
 
-
+// Map displays
 function displayJawgSunnyTile(map, JAWG_ACCESS_TOKEN){
   var Jawg_Sunny = L.tileLayer(
     "https://tile.jawg.io/jawg-sunny/{z}/{x}/{y}{r}.png?access-token={accessToken}",
@@ -51,6 +54,20 @@ function displayJawgSunnyTile(map, JAWG_ACCESS_TOKEN){
   );
   Jawg_Sunny.addTo(map);
 }
+function displayStadiaTile(map, STADIA_API_Key) {
+  var Stadia_AlidadeSmooth = L.tileLayer(
+    "https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}{r}.png?api_key={accessToken}",
+    {
+      attribution:
+        '&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      minZoom: 1,
+      maxZoom: 20,
+      accessToken: STADIA_API_Key,
+    }
+  );
+  Stadia_AlidadeSmooth.addTo(map);
+}
+// Map displays ends
 
 function displayCckCordinates(){
   let cckCor = [1.384, 103.747];
@@ -107,7 +124,6 @@ async function createPolylines(){
 
   // Compiled locations
   let places = await getBookmarks();
-  console.log(places)
 
   // marker creation for compiled locations
   places.forEach(place=>{
@@ -123,4 +139,25 @@ async function createPolylines(){
   polyline.addTo(polylineGroup);
 
   return polylineGroup;
+}
+
+// Bookmark functions =========================================================================
+function clearBookmarkUI(){
+  let bookmarkElement = document.querySelector('#bookmarks');
+  bookmarkElement.innerHTML = '';
+}
+
+async function getBookmarksUI(){
+  let bookmarkElement = document.querySelector("#bookmarks");
+  let bookmarkArray = await getBookmarks();
+
+  bookmarkElement.innerHTML = "";
+  for(let bookmark of bookmarkArray){
+    let html = `<li>Name: ${bookmark.name} <br> Location: ${bookmark.latlng}<br></li>`;
+    bookmarkElement.innerHTML += html;
+  }
+}
+
+async function createBookmarkUI(){
+  
 }

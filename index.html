@@ -36,17 +36,20 @@
   </head>
   <body>
     <header id="header">
-      <button id="readBookmarks">Get all bookmarks</button>
+      <button id="readBookmarks" onclick="getBookmarksUI()">Get all bookmarks</button>
       <button id="createBookmark">Create a bookmark</button>
       <button id="editBookmark">Edit a bookmark</button>
       <button id="deleteBookmark">Delete a bookmark</button>
     </header>
+    <!-- Bookmarks -->
     <div id="bookmarksDisplay">
       <h5>Bookmarks:</h5>
-      <ul id="bookmarks">
+      <button onclick="clearBookmarkUI()">Clear List</button>
+      <ol id="bookmarks">
 
-      </ul>
+      </ol>
     </div>
+    <!-- Map -->
     <div id="map"></div>
 
     <!-- Bootstrap 5.3.3 JS CDN -->

@@ -5,7 +5,8 @@
 const foursquare_API_KEY = "fsq30T1qctTML0U/mp7xUSEXaPiu8weIdCCYY5J4SknVa6k=";
 // jsonbin API key
 const JSONBIN_BIN_ID = "67277fbee41b4d34e44d9a25";
-const JSONBIN_ROOT_API_URL = "https://api.jsonbin.io/v3"
+const JSONBIN_ROOT_API_URL = "https://api.jsonbin.io/v3";
+
 // END Declaring constants =======================================================================
 
 
@@ -14,7 +15,6 @@ const JSONBIN_ROOT_API_URL = "https://api.jsonbin.io/v3"
 async function getBookmarksData(){
     let request = await axios.get(`${JSONBIN_ROOT_API_URL}/b/${JSONBIN_BIN_ID}/latest`);
     let bookmarksArray = request.data.record.places;
-    console.log("fetching bookmark finished ", bookmarksArray);
     return bookmarksArray;
 }
 // END READ bookmarks from jsonbin=======================================================================
