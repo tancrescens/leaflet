@@ -1,0 +1,18 @@
+{
+    "places": [
+        {
+            "name": "Brothers Ramen",
+            "latlng": [
+                1.2761402436896734,
+                103.84621509560635
+            ]
+        },
+        {
+            "name": "Hokkaido Ramen Santouka",
+            "latlng": [
+                1.2891689786154696,
+                103.8460687260308
+            ]
+        }
+    ]
+}
