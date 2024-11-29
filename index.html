@@ -1,83 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Bootstrap 5 CSS CDN -->
-    <link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
-      integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <!-- Marker Cluster plugin -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"
-    />
-    <!-- Leaflet CSS CDN -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-      crossorigin=""
-    />
-    <link
-      rel="stylesheet"
-      href="styles.css"
-    />
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Bootstrap 5 CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+    integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Marker Cluster plugin -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
+  <!-- Leaflet CSS CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="styles.css" />
 
 
-    <title>Leaflet Map</title>
-  </head>
-  <body>
-    <header id="header">
-      <button id="readBookmarks" onclick="getBookmarksUI()">Get all bookmarks</button>
-      <button id="createBookmark">Create a bookmark</button>
-      <button id="editBookmark">Edit a bookmark</button>
-      <button id="deleteBookmark">Delete a bookmark</button>
-    </header>
-    <!-- Bookmarks -->
-    <div id="bookmarksDisplay">
-      <h5>Bookmarks:</h5>
-      <button onclick="clearBookmarkUI()">Clear List</button>
-      <ol id="bookmarks">
+  <title>Leaflet Map</title>
+</head>
 
-      </ol>
+<body>
+  <header id="header">
+    <button id="readBookmarks" onclick="getBookmarksUI()">Get all bookmarks</button>
+    <button id="createBookmark">Create a bookmark</button>
+    <button id="editBookmark">Edit a bookmark</button>
+    <button id="deleteBookmark">Delete a bookmark</button>
+  </header>
+  <!-- Bookmarks -->
+  <div id="bookmarksDisplay">
+    <h5>Bookmarks:</h5>
+    <button onclick="clearBookmarkUI()">Clear List</button>
+    <ol id="bookmarks">
+    </ol>
+  </div>
+
+  <!-- Create Bookmark -->
+  <div class="card" style="width: 90vw;">
+    <div class="card-body">
+      <h5 class="card-title">Create a bookmark</h5>
+      <form>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="bookmarkName" placeholder="Favourite Ramen Place">
+          <label for="bookmarkName">Bookmark name</label>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Lattitude and Longtitude</label>
+          <div class="form-floating">
+            <input type="number" class="form-control no-stepper" id="bookmarkLat" step="0.000001" min="-90" max="90"
+              placeholder="1.27596">
+            <label for="bookmarkLat">Enter Latitude (-90 to 90)</label>
+
+          </div>
+          <div class="form-floating">
+            <input type="number" class="form-control no-stepper" id="bookmarkLng" step="0.000001" min="-180" max="180"
+              placeholder="103.84621">
+            <label for="bookmarkLng">Enter Longtitude (-180 to 180)</label>
+          </div>
+        </div>
+        <button type="submit" onclick="createBookmarkUI()" class="btn btn-primary">Submit</button>
+      </form>
     </div>
-    <!-- Map -->
-    <div id="map"></div>
+  </div>
 
-    <!-- Bootstrap 5.3.3 JS CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"
-      integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer">
+  <!-- Map -->
+  <div id="map"></div>
+
+  <!-- Bootstrap 5.3.3 JS CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"
+    integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
     </script>
-    <!-- Leaflet JS tile provider -->
-    <script src="https://unpkg.com/leaflet-providers@latest/leaflet-providers.js"></script>
-    <!-- leaflet JS CDN -->
-    <script
-      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-      crossorigin=""
-    ></script>
-    <!-- axios CDN -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"
-      integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <!-- marker cluster plugin -->
-    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster-src.js"></script>
-    <!-- customs scripts -->
-    <script src="data.js"></script>
-    <script src="bookmark.js"></script>
-    <script src="script.js"></script>
-  </body>
+  <!-- Leaflet JS tile provider -->
+  <script src="https://unpkg.com/leaflet-providers@latest/leaflet-providers.js"></script>
+  <!-- leaflet JS CDN -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <!-- axios CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"
+    integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- marker cluster plugin -->
+  <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster-src.js"></script>
+  <!-- customs scripts -->
+  <script src="data.js"></script>
+  <script src="bookmark.js"></script>
+  <script src="script.js"></script>
+</body>
+
 </html>

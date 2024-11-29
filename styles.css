@@ -1,3 +1,9 @@
 #map{
     height: 90vh;
 }
+
+input.no-stepper::-webkit-inner-spin-button,
+  input.no-stepper::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
