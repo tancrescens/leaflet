@@ -186,14 +186,15 @@ async function createBookmarkUI() {
 
   if (!bookmarkName || isNaN(bookmarkLat) || isNaN(bookmarkLng)) {
     alert("Please enter a valid name, latitude(-90 to 90), and longitude(-180 to 180).");
-    console.log("wrong input");
     return;
   }
-
+  if (bookmarkLat < -90 || bookmarkLat > 90 || bookmarkLng < -180 || bookmarkLng > 180) {
+    alert("latitude must within -90 to 90, and longitude must be within -180 to 180.");
+    return;
+  }
 
   //gptb4
   // createBookmark(bookmarkArray, bookmarkName, bookmarkLat, bookmarkLng);
   //gpt
-  console.log("CreateBookmark()");
   createBookmark(bookmarkArray, bookmarkName, bookmarkLat, bookmarkLng).then(refreshMap);
 }
