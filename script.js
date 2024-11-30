@@ -181,11 +181,12 @@ async function getBookmarksUI() {
 async function createBookmarkUI() {
   let bookmarkArray = await getBookmarks();
   let bookmarkName = document.querySelector("#bookmarkName").value;
-  let bookmarkLat = document.querySelector("#bookmarkLat").value;
-  let bookmarkLng = document.querySelector("#bookmarkLng").value;
+  let bookmarkLat = parseFloat(document.querySelector("#bookmarkLat").value);
+  let bookmarkLng = parseFloat(document.querySelector("#bookmarkLng").value);
 
   if (!bookmarkName || isNaN(bookmarkLat) || isNaN(bookmarkLng)) {
     alert("Please enter a valid name, latitude(-90 to 90), and longitude(-180 to 180).");
+    console.log("wrong input");
     return;
   }
 
@@ -193,6 +194,6 @@ async function createBookmarkUI() {
   //gptb4
   // createBookmark(bookmarkArray, bookmarkName, bookmarkLat, bookmarkLng);
   //gpt
+  console.log("CreateBookmark()");
   createBookmark(bookmarkArray, bookmarkName, bookmarkLat, bookmarkLng).then(refreshMap);
-
 }

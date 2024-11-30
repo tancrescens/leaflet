@@ -21,7 +21,6 @@ A site that saves food places bookmarks and has a search + plan your route funct
 
 ## todo
 * refresh map
-* parse correct datatype to latlng
 
 
 ### Search Features

@@ -35,7 +35,7 @@ async function createBookmarkData(bookmarkArray, bookmarkName, bookmarkLat, book
     bookmarkArray.push({ name: bookmarkName, latlng: [bookmarkLat, bookmarkLng] });
 
     let request = await axios.put(`${JSONBIN_ROOT_API_URL}/b/${JSONBIN_BIN_ID}`, { places: bookmarkArray });
-    console.log("Updated Bookmark Array:", request.data);
+    console.log("createBookmarkData(): Updated Bookmark Array:", request.data);
 }
 //gpt
 // Trigger map layer refresh:
