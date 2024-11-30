@@ -19,6 +19,11 @@ A site that saves food places bookmarks and has a search + plan your route funct
 - Create, Read, Update, Delete categories
 - Display cluster of markers when categories clicked
 
+## todo
+* refresh map
+* parse correct datatype to latlng
+
+
 ### Search Features
 
 - Draw search results from Foursquare API and display into a list
