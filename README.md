@@ -6,6 +6,7 @@ A site that saves food places bookmarks and has a search + plan your route funct
 # Features
 
 - **Bookmark**: bookmark the food places you have visited (WIP)
+  - Pagination of datatable.s
   - Database: store food places to JSON.
   - Map: Show markers from saved food places.
   - Route: Draw polyline according to shown bookmarks.
@@ -20,7 +21,7 @@ A site that saves food places bookmarks and has a search + plan your route funct
 - Display cluster of markers when categories clicked
 
 ## todo
-* refresh map
+* refresh map upon adding new bookmark
 
 
 ### Search Features

@@ -162,11 +162,6 @@ async function createBookmarkPolylines(bookmarkArray) {
 }
 
 // Bookmark functions =========================================================================
-function clearBookmarkUI() {
-  let bookmarkElement = document.querySelector('#bookmarks');
-  bookmarkElement.innerHTML = '';
-}
-
 async function getBookmarksUI() {
   let bookmarkElement = document.querySelector("#bookmarks");
   let bookmarkArray = await getBookmarks();
@@ -176,6 +171,11 @@ async function getBookmarksUI() {
     let html = `<li>Name: ${bookmark.name} <br> Location: ${bookmark.latlng}<br></li>`;
     bookmarkElement.innerHTML += html;
   }
+}
+
+function clearBookmarkUI() {
+  let bookmarkElement = document.querySelector('#bookmarks');
+  bookmarkElement.innerHTML = '';
 }
 
 async function createBookmarkUI() {
